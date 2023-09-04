@@ -26,7 +26,7 @@ public class QuejaRepositoryImpl implements IQuejaRepository {
 
 	@Override
 	public List<Queja> buscarTodos() {
-		TypedQuery<Queja> myQuery = this.entityManager.createQuery("SELECT q FROM Queja q", Queja.class);
+		TypedQuery<Queja> myQuery = this.entityManager.createQuery("SELECT q FROM Queja q where q.usuario!=null", Queja.class);
 		return myQuery.getResultList();
 	}
 
