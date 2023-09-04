@@ -2,6 +2,8 @@ package com.example.demo.repository.modelo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,8 +17,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
+
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usua_id_seq")
 	@SequenceGenerator(name = "usua_id_seq", sequenceName = "usua_id_seq", allocationSize = 1)
@@ -38,109 +41,133 @@ public class Usuario {
 	private String cedula;
 	@Column(name = "usua_direccion")
 	private String direccion;
-	
+
 	@OneToMany(mappedBy = "usuario")
 	private List<Noticia> noticias;
-	
+
 	@OneToMany(mappedBy = "usuario")
 	private List<TemaForo> temas;
-	
+
 	@OneToMany(mappedBy = "usuario")
 	private List<ComentarioForo> comentarios;
-	
+
 	@OneToMany(mappedBy = "usuario")
 	private List<Queja> quejas;
-	
+
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
-	
-	//SET Y GET
+
+	// SET Y GET
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public String getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
 	public String getCorreo() {
 		return correo;
 	}
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
 	public String getContraseña() {
 		return contraseña;
 	}
+
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
+
 	public String getSemestre() {
 		return semestre;
 	}
+
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
+
 	public String getCedula() {
 		return cedula;
 	}
+
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+
 	public String getDireccion() {
 		return direccion;
 	}
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
 	public List<Noticia> getNoticias() {
 		return noticias;
 	}
+
 	public void setNoticias(List<Noticia> noticias) {
 		this.noticias = noticias;
 	}
+
 	public List<TemaForo> getTemas() {
 		return temas;
 	}
+
 	public void setTemas(List<TemaForo> temas) {
 		this.temas = temas;
 	}
+
 	public List<ComentarioForo> getComentarios() {
 		return comentarios;
 	}
+
 	public void setComentarios(List<ComentarioForo> comentarios) {
 		this.comentarios = comentarios;
 	}
+
 	public List<Queja> getQuejas() {
 		return quejas;
 	}
+
 	public void setQuejas(List<Queja> quejas) {
 		this.quejas = quejas;
 	}
+
 	public Suscripcion getSuscripcion() {
 		return suscripcion;
 	}
+
 	public void setSuscripcion(Suscripcion suscripcion) {
 		this.suscripcion = suscripcion;
 	}
-	
-	
-	
-	
+
 }

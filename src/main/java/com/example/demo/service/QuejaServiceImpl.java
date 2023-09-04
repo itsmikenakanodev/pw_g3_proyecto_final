@@ -45,8 +45,7 @@ public class QuejaServiceImpl implements IQuejaService {
 			// TODO: handle exception
 			return listaTO;
 		}
-		
-		
+
 	}
 
 	private QuejaTO convertirATo(Queja queja) {
