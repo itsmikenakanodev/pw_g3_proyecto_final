@@ -1,5 +1,10 @@
 package com.example.demo.repository;
 
-public interface IUsuarioRepository {
+import com.example.demo.repository.modelo.Usuario;
 
+public interface IUsuarioRepository {
+	
+	public void insertar(Usuario u);
+	
+	public Usuario buscarPorUsuario(String usuario);
 }
