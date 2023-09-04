@@ -25,8 +25,9 @@ public class ComentarioForoServiceImpl implements IComentarioForoService {
 
 		ComentarioForo comentarioForo = new ComentarioForo();
 		comentarioForo.setComentario(comentarioForoTO.getComentario());
-		comentarioForo.setFecha(comentarioForo.getFecha());
-		comentarioForo.setUsuario(comentarioForo.getUsuario());
+		comentarioForo.setFecha(comentarioForoTO.getFecha());
+		comentarioForo.setUsuario(comentarioForoTO.getUsuario());
+		comentarioForo.setTema(comentarioForoTO.getTema());
 
 		return comentarioForo;
 

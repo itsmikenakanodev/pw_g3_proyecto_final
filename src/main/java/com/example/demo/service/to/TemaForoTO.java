@@ -15,6 +15,7 @@ public class TemaForoTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 
+	private Integer id;
 	private String titulo;
 	private String descripcion;
 	private LocalDateTime fecha;
@@ -53,9 +54,17 @@ public class TemaForoTO implements Serializable {
 	public void setComentarios(List<ComentarioForo> comentarios) {
 		this.comentarios = comentarios;
 	}
-	public TemaForoTO(String titulo, String descripcion, LocalDateTime fecha, Usuario usuario,
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public TemaForoTO(Integer id, String titulo, String descripcion, LocalDateTime fecha, Usuario usuario,
 			List<ComentarioForo> comentarios) {
 		super();
+		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.fecha = fecha;

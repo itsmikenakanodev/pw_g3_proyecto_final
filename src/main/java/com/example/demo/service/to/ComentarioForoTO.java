@@ -3,6 +3,7 @@ package com.example.demo.service.to;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.example.demo.repository.modelo.TemaForo;
 import com.example.demo.repository.modelo.Usuario;
 
 public class ComentarioForoTO implements Serializable {
@@ -14,7 +15,7 @@ public class ComentarioForoTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String comentario;
 	private LocalDateTime fecha;
-	
+	private TemaForo tema;
 	private Usuario usuario;
 	
 
@@ -42,6 +43,14 @@ public class ComentarioForoTO implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public TemaForo getTema() {
+		return tema;
+	}
+
+	public void setTema(TemaForo tema) {
+		this.tema = tema;
 	}
 
 	

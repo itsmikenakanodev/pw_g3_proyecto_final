@@ -38,7 +38,7 @@ public class TemaForoSeviceImpl implements ITemaForoService {
 	}
 
 	private TemaForoTO convertirATo(TemaForo temaforo) {
-		TemaForoTO temaForoTO = new TemaForoTO(temaforo.getTitulo(), temaforo.getDescripcion(), temaforo.getFecha(),
+		TemaForoTO temaForoTO = new TemaForoTO(temaforo.getId(),temaforo.getTitulo(), temaforo.getDescripcion(), temaforo.getFecha(),
 				temaforo.getUsuario(), temaforo.getComentarios());
 
 		return temaForoTO;
@@ -51,7 +51,7 @@ public class TemaForoSeviceImpl implements ITemaForoService {
 		List<TemaForo> lista = this.iTemaForoRepository.buscarTodos();
 		List<TemaForoTO> listaTO = new ArrayList<>();
 		try {
-			listaTO = lista.stream().map(temaforo -> this.convertirATo(temaforo)).toList();
+			listaTO = lista.stream().map(temaforo -> this.convertirATo(temaforo)).collect(Collectors.toList());
 			return listaTO;
 		} catch (Exception e) {
 			// TODO: handle exception
