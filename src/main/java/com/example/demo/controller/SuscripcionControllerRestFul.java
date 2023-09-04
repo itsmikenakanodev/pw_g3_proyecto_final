@@ -31,11 +31,9 @@ public class SuscripcionControllerRestFul {
 	public Boolean guardar(@RequestBody SuscripcionTo suscripcion) {
 		Usuario usuario=this.usuarioService.buscarUsuarioSuscritos(suscripcion.getUsuario());
 		if(usuario.getSuscripcion()==null) {
-			this.suscripcionService.suscribirse(suscripcion.devolverSuscripcion(usuario));
-			//Se pone un retorno booleano para el frondend, para que diga si esta suscrito o no
+			this.suscripcionService.suscribirse(suscripcion, usuario);
 			return true;
 		}else {
-			System.out.println("No se pudo registrar  ");
 			return false;
 		}
 		

@@ -9,4 +9,6 @@ public interface IUsuarioRepository {
 	public Usuario buscarPorUsuario(String usuario);
 	
 	public Usuario buscarPorUsuarioConSus(String usuario);
+	
+	public void actualizar(Usuario u);
 }

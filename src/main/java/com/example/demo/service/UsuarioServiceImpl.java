@@ -77,4 +77,10 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		}
 	}
 
+	@Override
+	public void actualizar(Usuario u) {
+		// TODO Auto-generated method stub
+		this.iUsuarioRepository.actualizar(u);
+	}
+
 }
