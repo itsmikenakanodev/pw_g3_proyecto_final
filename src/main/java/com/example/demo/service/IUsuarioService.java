@@ -1,10 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.service.to.UsuarioTO;
+import com.example.demo.repository.modelo.Usuario;
 
 public interface IUsuarioService {
 
-	public void insertar(UsuarioTO u);
-
-	public UsuarioTO buscarPorUsuario(String usuario);
+	public Usuario buscarUsuario(String usuario);
 }
