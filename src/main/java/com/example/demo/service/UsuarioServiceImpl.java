@@ -63,5 +63,17 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		
 		return u;
 	}
+	
+	@Override
+	public Usuario buscarUsuarioSuscritos(String usuario) {
+		// TODO Auto-generated method stub
+		try {
+			return this.iUsuarioRepository.buscarPorUsuarioConSus(usuario);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Entro al error");
+			return new Usuario();
+		}
+	}
 
 }

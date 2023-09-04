@@ -19,7 +19,6 @@ public class QuejaServiceImpl implements IQuejaService {
 
 	@Override
 	public void insertarQueja(QuejaTO quejaTo) {
-		System.out.println(quejaTo);
 		Queja queja = this.convertir(quejaTo);
 		this.iQuejaRepository.ingresar(queja);
 	}

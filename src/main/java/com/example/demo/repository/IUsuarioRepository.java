@@ -7,4 +7,6 @@ public interface IUsuarioRepository {
 	public void insertar(Usuario u);
 	
 	public Usuario buscarPorUsuario(String usuario);
+	
+	public Usuario buscarPorUsuarioConSus(String usuario);
 }

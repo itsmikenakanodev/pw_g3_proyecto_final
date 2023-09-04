@@ -30,4 +30,13 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository{
 		
 		return myQuery.getSingleResult();
 	}
+	
+	@Override
+	public Usuario buscarPorUsuarioConSus(String usuario) {
+	    TypedQuery<Usuario> query = this.entityManager.createQuery(
+	        "SELECT u FROM Usuario u LEFT JOIN FETCH u.suscripcion WHERE u.usuario=:datoUsuario", Usuario.class
+	    );
+	    query.setParameter("datoUsuario", usuario);
+	    return query.getSingleResult();
+	}
 }
