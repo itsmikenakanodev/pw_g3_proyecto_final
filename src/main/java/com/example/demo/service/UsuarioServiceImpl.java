@@ -52,6 +52,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	
 	private UsuarioTO convertirTO(Usuario usuario) {
 		UsuarioTO u = new UsuarioTO();
+		u.setId(usuario.getId());
 		u.setNombre(usuario.getNombre());
 		u.setApellido(usuario.getApellido());
 		u.setCedula(usuario.getCedula());

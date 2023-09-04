@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.IUsuarioService;
@@ -34,15 +35,16 @@ public class UsuarioControllerRestFul {
 		}
 	}
 	
-	@GetMapping(path ="/{usuario}",  produces = MediaType.APPLICATION_JSON_VALUE)
-	public UsuarioTO verificar(@PathVariable String usuario) {
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public UsuarioTO verificar(@RequestParam String usuario, @RequestParam String contraseña) {
 		
 		UsuarioTO user = this.iUsuarioService.buscarPorUsuario(usuario);
 		
-		if(user!=null) {
+		if(user!=null && user.getContraseña().equals(contraseña)) {
 			return user;
 		}else {
 			return new UsuarioTO();
 		}
 	}
+	
 }
