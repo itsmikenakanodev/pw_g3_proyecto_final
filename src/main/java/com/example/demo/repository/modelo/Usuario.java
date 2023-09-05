@@ -55,7 +55,7 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
 	private List<Queja> quejas;
 
-	@OneToOne(mappedBy = "usuario")
+	@OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
 	private Suscripcion suscripcion;
 
 	// SET Y GET

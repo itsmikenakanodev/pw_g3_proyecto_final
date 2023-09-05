@@ -28,7 +28,10 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository{
 		TypedQuery<Usuario> myQuery= this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.usuario= :datoUsuario", Usuario.class);
 		myQuery.setParameter("datoUsuario", usuario);
 		
-		return myQuery.getSingleResult();
+		
+		Usuario u =myQuery.getSingleResult();
+		u.getSuscripcion();
+		return u;
 	}
 	
 	@Override

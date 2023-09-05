@@ -35,7 +35,7 @@ public class TemaForo {
 	@Column(name = "tefo_fecha")
 	private LocalDateTime fecha;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "tefo_id_usuario")
 	private Usuario usuario;
 	
