@@ -39,4 +39,10 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository{
 	    query.setParameter("datoUsuario", usuario);
 	    return query.getSingleResult();
 	}
+
+	@Override
+	public void actualizar(Usuario u) {
+		// TODO Auto-generated method stub
+		this.entityManager.merge(u);
+	}
 }
