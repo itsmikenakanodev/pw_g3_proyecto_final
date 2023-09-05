@@ -27,7 +27,7 @@ public class TemaForoRepositoryImpl implements ITemaForoRepository{
 	public List<TemaForo> buscarTodos() {
 		// TODO Auto-generated method stub
 		
-		TypedQuery<TemaForo> temas = this.entityManager.createQuery("SELECT t FROM TemaForo t" ,TemaForo.class);
+		TypedQuery<TemaForo> temas = this.entityManager.createQuery("SELECT t FROM TemaForo t WHERE t.usuario!=null" ,TemaForo.class);
 		
 		return temas.getResultList();
 	}

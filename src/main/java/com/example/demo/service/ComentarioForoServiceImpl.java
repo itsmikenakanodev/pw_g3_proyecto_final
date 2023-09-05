@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +35,40 @@ public class ComentarioForoServiceImpl implements IComentarioForoService {
 
 		return comentarioForo;
 
+	}
+	
+	private ComentarioForoTO convertirTO(ComentarioForo comentarioForo) {
+		
+		ComentarioForoTO comentarioForoTO =  new ComentarioForoTO();
+		
+		comentarioForoTO.setComentario(comentarioForo.getComentario());
+		comentarioForoTO.setFecha(comentarioForo.getFecha());
+		comentarioForoTO.setUsuario(comentarioForo.getUsuario());
+		
+		return comentarioForoTO;
+		
+	}
+	
+
+	@Override
+	public List<ComentarioForoTO> buscarTodosPorTemaID(Integer id) {
+		// TODO Auto-generated method stub
+		List<ComentarioForo> lista = new ArrayList<>();
+		List<ComentarioForoTO> listaTO =new ArrayList<>();
+
+		//List<ComentarioForo> lista = this.iComentarioForoRepository.buscarTodosPorTemaID(id);
+		try {
+			lista = this.iComentarioForoRepository.buscarTodosPorTemaID(id);
+			listaTO =  lista.stream().map(l->this.convertirTO(l)).collect(Collectors.toList());
+			return listaTO;
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			return listaTO;
+		}
+		
+		
+		
 	}
 
 }
