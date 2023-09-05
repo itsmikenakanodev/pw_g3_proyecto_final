@@ -17,20 +17,21 @@ public class NoticiaRepositoryImpl implements INoticiaRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	public void insertar(Noticia noticia) {
 		// TODO Auto-generated method stub
-		
+
 		this.entityManager.persist(noticia);
-		
+
 	}
 
 	@Override
 	public List<Noticia> buscarTodos() {
 		// TODO Auto-generated method stub
-		
-		TypedQuery<Noticia> query = this.entityManager.createQuery("SELECT n FROM Noticia n",Noticia.class);
+
+		TypedQuery<Noticia> query = this.entityManager.createQuery("SELECT n FROM Noticia n WHERE n.usuario!=null",
+				Noticia.class);
 		return query.getResultList();
 	}
 

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,45 +20,51 @@ public class NoticiaServiceImpl implements INoticiaService {
 	@Override
 	public void insertar(NoticiaTO noticiaTO) {
 		// TODO Auto-generated method stub
-		
+
 		this.iNoticiaRepository.insertar(this.convertir(noticiaTO));
 
 	}
-	
+
 	private Noticia convertir(NoticiaTO noticiaTO) {
-		Noticia noticia= new Noticia();
-		noticia.setId(noticiaTO.getId());
+		Noticia noticia = new Noticia();
 		noticia.setDescripcion(noticiaTO.getDescripcion());
 		noticia.setFecha(noticiaTO.getFecha());
 		noticia.setImagen(noticiaTO.getImagen());
-		noticia.setTitulo(noticiaTO.getTitulo());
 		noticia.setUsuario(noticiaTO.getUsuario());
+		noticia.setTitulo(noticiaTO.getTitulo());
 		noticia.setVideo(noticiaTO.getVideo());
-		
+
 		return noticia;
 	}
 
 	@Override
 	public List<NoticiaTO> buscarTodos() {
-		// TODO Auto-generated method 
-		List<Noticia> list= this.iNoticiaRepository.buscarTodos();
-		List<NoticiaTO> noticiaTOs = list.stream().map(noticia -> this.convertirTO(noticia)).collect(Collectors.toList());
-		return noticiaTOs;
+		// TODO Auto-generated method
+		List<Noticia> list = new ArrayList<>();
+		List<NoticiaTO> noticiaTOs = new ArrayList<>();
+
+		try {
+			list = this.iNoticiaRepository.buscarTodos();
+			noticiaTOs = list.stream().map(noticia -> this.convertirTO(noticia)).collect(Collectors.toList());
+			return noticiaTOs;
+		} catch (Exception exception) {
+			return noticiaTOs;
+		}
+
 	}
 
-	
-	private NoticiaTO convertirTO (Noticia noticia ) {
-		NoticiaTO noticiaTO=new NoticiaTO();
+	private NoticiaTO convertirTO(Noticia noticia) {
+		NoticiaTO noticiaTO = new NoticiaTO();
 		noticiaTO.setId(noticia.getId());
 		noticiaTO.setDescripcion(noticia.getDescripcion());
 		noticiaTO.setFecha(noticia.getFecha());
 		noticiaTO.setImagen(noticia.getImagen());
-		noticiaTO.setTitulo(noticia.getTitulo());
 		noticiaTO.setUsuario(noticia.getUsuario());
+		noticiaTO.setTitulo(noticia.getTitulo());
 		noticiaTO.setVideo(noticia.getVideo());
-		
+
 		return noticiaTO;
-		
+
 	}
 
 	@Override
